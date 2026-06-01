@@ -7,9 +7,9 @@ export const brand = {
   author: {
     name: "Leonardo",
     role: "Desenvolvedor Fullstack",
-    github: "https://github.com/seu-usuario",
-    linkedin: "https://linkedin.com/in/seu-usuario",
-    email: "seu@email.com",
+    github: "https://github.com/leonarddoarruda",
+    linkedin: "https://linkedin.com/in/leonarddoarruda",
+    email: "leonardo@email.com",
   },
   colors: {
     primary: "#7c3aed",

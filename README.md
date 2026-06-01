@@ -64,7 +64,7 @@ Projeto ideal para **portfólio fullstack**, demonstrando capacidade de construi
 **Pré-requisito:** Node.js 20+
 
 ```bash
-git clone https://github.com/SEU-USUARIO/studioflow.git
+git clone https://github.com/leonarddoarruda/studioflow.git
 cd studioflow
 npm install
 cp .env.example .env
@@ -119,10 +119,10 @@ src/
 
 **Leonardo** — Desenvolvedor Fullstack
 
-- GitHub: [@SEU-USUARIO](https://github.com/SEU-USUARIO)
-- LinkedIn: [/in/SEU-USUARIO](https://linkedin.com/in/SEU-USUARIO)
+- GitHub: [@leonarddoarruda](https://github.com/leonarddoarruda)
+- LinkedIn: [/in/leonarddoarruda](https://linkedin.com/in/leonarddoarruda)
 
-> Antes de publicar, substitua `SEU-USUARIO` pelo seu usuário real no GitHub e LinkedIn, e edite `src/lib/brand.ts`.
+> Atualize o link do LinkedIn em `src/lib/brand.ts` se o seu perfil usar outro slug.
 
 ---
 

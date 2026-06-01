@@ -12,8 +12,8 @@ Edite `src/lib/brand.ts` com suas informações reais:
 author: {
   name: "Leonardo",           // seu nome completo
   role: "Desenvolvedor Fullstack",
-  github: "https://github.com/SEU-USUARIO",
-  linkedin: "https://linkedin.com/in/SEU-USUARIO",
+  github: "https://github.com/leonarddoarruda",
+  linkedin: "https://linkedin.com/in/leonarddoarruda",
   email: "seu@email.com",
 },
 ```
@@ -62,7 +62,7 @@ cd C:\Users\leona\Projects\salao-beleza
 git branch -M main
 
 # Conectar ao seu repositório (troque SEU-USUARIO e studioflow)
-git remote add origin https://github.com/SEU-USUARIO/studioflow.git
+git remote add origin https://github.com/leonarddoarruda/studioflow.git
 
 # Enviar
 git push -u origin main
@@ -111,7 +111,7 @@ O que o sistema faz:
 
 Foi um projeto completo — do modelagem do banco à interface, passando por autenticação, API REST e integração com WhatsApp (Evolution API).
 
-📂 Código aberto no GitHub: [COLE SEU LINK AQUI]
+📂 Código aberto no GitHub: https://github.com/leonarddoarruda/studioflow
 
 #desenvolvedor #fullstack #nextjs #typescript #portfolio #webdevelopment #programacao #tech #software
 ```
