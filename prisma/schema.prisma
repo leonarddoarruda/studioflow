@@ -1,0 +1,169 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "sqlite"
+}
+
+enum Role {
+  ADMIN
+  STAFF
+  CLIENT
+}
+
+enum AppointmentStatus {
+  PENDING
+  CONFIRMED
+  CANCELLED
+  COMPLETED
+  NO_SHOW
+}
+
+enum StockMovementType {
+  IN
+  OUT
+  ADJUSTMENT
+}
+
+enum TransactionType {
+  INCOME
+  EXPENSE
+}
+
+enum TransactionCategory {
+  SERVICE
+  PRODUCT_SALE
+  OTHER_INCOME
+  RENT
+  SUPPLIES
+  SALARY
+  UTILITIES
+  MARKETING
+  OTHER_EXPENSE
+}
+
+enum PaymentMethod {
+  CASH
+  PIX
+  CREDIT_CARD
+  DEBIT_CARD
+  TRANSFER
+}
+
+model User {
+  id        String   @id @default(cuid())
+  name      String
+  email     String   @unique
+  password  String
+  phone     String?
+  role      Role     @default(CLIENT)
+  active    Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  clientAppointments     Appointment[]         @relation("ClientAppointments")
+  staffAppointments      Appointment[]         @relation("StaffAppointments")
+  stockMovements         StockMovement[]
+  financialTransactions  FinancialTransaction[]
+}
+
+model SalonSettings {
+  id            String   @id @default(cuid())
+  name          String   @default("Salão de Beleza")
+  phone         String   @default("")
+  whatsappPhone String   @default("")
+  address       String?
+  openingTime   String   @default("09:00")
+  closingTime   String   @default("19:00")
+  slotDuration  Int      @default(30)
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
+
+model Service {
+  id          String   @id @default(cuid())
+  name        String
+  description String?
+  duration    Int
+  price       Float
+  active      Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  appointments Appointment[]
+}
+
+model Appointment {
+  id        String            @id @default(cuid())
+  clientId  String
+  staffId   String?
+  serviceId String
+  date      DateTime
+  status    AppointmentStatus @default(PENDING)
+  notes     String?
+  createdAt DateTime          @default(now())
+  updatedAt DateTime          @updatedAt
+
+  client  User    @relation("ClientAppointments", fields: [clientId], references: [id])
+  staff   User?   @relation("StaffAppointments", fields: [staffId], references: [id])
+  service Service @relation(fields: [serviceId], references: [id])
+  transaction FinancialTransaction?
+
+  @@index([date])
+  @@index([clientId])
+  @@index([status])
+}
+
+model Product {
+  id           String   @id @default(cuid())
+  name         String
+  sku          String   @unique
+  description  String?
+  quantity     Int      @default(0)
+  minQuantity  Int      @default(5)
+  unit         String   @default("un")
+  price        Float    @default(0)
+  active       Boolean  @default(true)
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+
+  movements StockMovement[]
+}
+
+model StockMovement {
+  id        String            @id @default(cuid())
+  productId String
+  userId    String
+  type      StockMovementType
+  quantity  Int
+  reason    String?
+  createdAt DateTime          @default(now())
+
+  product Product @relation(fields: [productId], references: [id])
+  user    User    @relation(fields: [userId], references: [id])
+
+  @@index([productId])
+}
+
+model FinancialTransaction {
+  id            String              @id @default(cuid())
+  type          TransactionType
+  category      TransactionCategory
+  amount        Float
+  description   String
+  date          DateTime
+  paymentMethod PaymentMethod       @default(PIX)
+  appointmentId String?             @unique
+  userId        String
+  createdAt     DateTime            @default(now())
+  updatedAt     DateTime            @updatedAt
+
+  user        User         @relation(fields: [userId], references: [id])
+  appointment Appointment? @relation(fields: [appointmentId], references: [id])
+
+  @@index([date])
+  @@index([type])
+  @@index([category])
+}
