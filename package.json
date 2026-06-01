@@ -4,7 +4,8 @@
   "description": "Sistema fullstack de gestão para salões de beleza — agendamentos, financeiro, estoque e WhatsApp",
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "prisma generate && next build",
+    "diagnostico": "tsx scripts/diagnostico-login.ts",
     "start": "next start",
     "lint": "eslint",
     "postinstall": "prisma generate",

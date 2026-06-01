@@ -104,7 +104,13 @@ src/
 
 ---
 
-## Scripts disponíveis
+## Deploy gratuito (colocar online)
+
+Guia completo em **[docs/DEPLOY.md](docs/DEPLOY.md)** — Neon (banco grátis) + Vercel (hospedagem grátis).
+
+Resumo: crie banco no [Neon](https://neon.tech) → configure `.env` → `npm run db:seed` → importe no [Vercel](https://vercel.com).
+
+---
 
 | Comando | Descrição |
 |---------|-----------|

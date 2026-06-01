@@ -19,7 +19,6 @@ function createPrismaClient() {
   return new PrismaClient({ adapter });
 }
 
-// Em dev não cacheia — evita client desatualizado após migrations
 export const prisma =
   process.env.NODE_ENV === "production"
     ? globalForPrisma.prisma ?? createPrismaClient()

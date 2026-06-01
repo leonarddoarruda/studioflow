@@ -5,11 +5,12 @@ export const brand = {
   description:
     "Sistema fullstack que desenvolvi para centralizar agendamentos, estoque, financeiro e WhatsApp em um só lugar.",
   author: {
-    name: "Leonardo",
+    name: "Leonardo Arruda",
     role: "Desenvolvedor Fullstack",
     github: "https://github.com/leonarddoarruda",
-    linkedin: "https://linkedin.com/in/leonarddoarruda",
-    email: "leonardo@email.com",
+    linkedin: "https://linkedin.com/in/leonardo-arruda-993aa6303",
+    email: "leonardoarrudacontato@gmail.com",
+    phone: "47999641996",
   },
   colors: {
     primary: "#7c3aed",
